@@ -1,4 +1,6 @@
 import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { View, Text, Image, Button, Alert } from 'react-native';
 
 const styles = {
@@ -17,7 +19,7 @@ const styles = {
   }
 }
 
-const App = () => {
+const Inicio = ({ navigation }) => {
   return (
     <View style={{flex:1}}>
       <View style={{flexGrow:1, alignItems:'center', justifyContent:'center'}}>
@@ -29,9 +31,30 @@ const App = () => {
         <Text>MARZO-JUNIO 2021</Text>
       </View>
       <Button style={styles.ctaButton} title="Entrar"
-        onPress={()=>Alert.alert("Hola")}/>
+        onPress={()=>navigation.navigate('segunda')}/>
     </View>
   );
 };
+
+const SegundaPantalla = () => {
+  return (
+    <View>
+      <Text>Segunda pantalla</Text>
+    </View>
+  );
+}
+
+const Stack = createStackNavigator();
+
+const App = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="inicio" component={Inicio} options={{title:'Página principal'}} />
+        <Stack.Screen name="segunda" component={SegundaPantalla} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
+}
 
 export default App;
