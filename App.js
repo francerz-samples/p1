@@ -19,7 +19,7 @@ const styles = {
   }
 }
 
-const Inicio = ({ navigation }) => {
+const Inicio = ({navigation}) => {
   return (
     <View style={{flex:1}}>
       <View style={{flexGrow:1, alignItems:'center', justifyContent:'center'}}>
@@ -36,10 +36,15 @@ const Inicio = ({ navigation }) => {
   );
 };
 
-const SegundaPantalla = () => {
+const SegundaPantalla = ({ navigation }) => {
   return (
     <View>
       <Text>Segunda pantalla</Text>
+      <Button title="Atras" onPress={() => navigation.goBack()} />
+      <Button title="Ir a Inicio" onPress={() => navigation.navigate('inicio')} />
+      <Button title="Ir a segunda" onPress={() => navigation.navigate('segunda')} />
+      <Button title="Ir a segunda (forzado)" onPress={() => navigation.push('segunda')} />
+      <Button title="Regresar al principio" onPress={() => navigation.popToTop()} />
     </View>
   );
 }
